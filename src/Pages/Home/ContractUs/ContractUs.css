@@ -1,0 +1,24 @@
+.contract__form input {
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-top: 25px;
+  text-align: center;
+  padding: 10px 35px;
+  color: #495057;
+  background-color: #f1f6f9;
+  transition: 0.5s;
+}
+input[type="submit"] {
+  background-color: #fc5c65;
+  color: white;
+}
+.contract__form textarea {
+  margin-top: 20px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  color: #495057;
+  background-color: #f1f6f9;
+}

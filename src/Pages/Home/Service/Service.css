@@ -1,0 +1,55 @@
+.book__container {
+  font-family: "Ubuntu", sans-serif;
+}
+.package__details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.package__details h1 {
+  color: #211e3b;
+  font-weight: 600;
+}
+.package__details p {
+  margin: 20px 0;
+  width: 75%;
+  font-weight: 600;
+  color: #495057;
+}
+.package__details img {
+  border-radius: 5px;
+  margin-left: 10px;
+}
+.form__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.form__container h4 {
+  color: #fc5c65;
+  margin: 15px 0;
+}
+.form__container input {
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-top: 25px;
+  text-align: center;
+  padding: 10px 35px;
+  color: #495057;
+  background-color: #f1f6f9;
+  transition: 0.5s;
+}
+.form__container label {
+  text-align: center;
+}
+input[type="submit"] {
+  background-color: #fc5c65;
+  color: white;
+  margin: 10px 0;
+}
+input[type="date"] {
+  padding: 10px 60px;
+}

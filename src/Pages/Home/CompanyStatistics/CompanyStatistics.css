@@ -1,0 +1,42 @@
+.statistics__container {
+  background-color: #211e3b;
+  min-height: 30vh;
+  text-align: center;
+  padding-bottom: 50px;
+}
+.statistics__container_item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.statistics__container_item h1 {
+  color: white;
+  font-weight: 500;
+}
+.statistics__container_item span {
+  font-size: 30px;
+  color: white;
+  font-weight: 300;
+}
+.company__item {
+  background-color: #282541;
+  border-radius: 10px;
+  padding: 15px;
+}
+.icons {
+  color: white;
+  font-size: 35px;
+}
+.dot {
+  font-size: 10px;
+  color: #fc5c65;
+}
+
+@media (max-width: 480px) {
+  .statistics__container_item {
+    flex-direction: column;
+  }
+  .company__item {
+    margin: 15px 0;
+  }
+}
