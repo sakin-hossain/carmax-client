@@ -49,7 +49,7 @@ const Header = () => {
                             }
                             {
                                 user.email && <Link to="/admin">
-                                    <button className="btn__register">Admin</button>
+                                    <button className="btn__register">Dashboard</button>
                                 </Link>
                             }
                             {
