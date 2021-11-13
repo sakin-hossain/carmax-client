@@ -8,7 +8,7 @@ const useFirebase = () => {
     const auth = getAuth();
     const [user, setUser] = useState({});
     const [isLogin, setIsLogin] = useState(false);
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState("");
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState("");
@@ -63,7 +63,7 @@ const useFirebase = () => {
             const newUser = { email, displayName: name };
             setUser(newUser);
             setError("");
-            setUserName();
+            // setUserName();
             //save user to database
             saveUser(email, name, 'POST');
             // send name to firebase after creation
@@ -87,9 +87,9 @@ const useFirebase = () => {
         return signInWithEmailAndPassword(auth, email, password)
     }
 
-    const setUserName = () => {
-        updateProfile(auth.currentUser, { displayName: name }).then((result) => {});
-      };
+    // const setUserName = () => {
+    //     updateProfile(auth.currentUser, { displayName: name }).then((result) => {});
+    //   };
 // check current user sill logged in or not
     useEffect(()=>{
         const unsubscribed = onAuthStateChanged(auth, user=>{
@@ -163,3 +163,5 @@ useEffect(() => {
 }
 
 export default useFirebase;
+
+  

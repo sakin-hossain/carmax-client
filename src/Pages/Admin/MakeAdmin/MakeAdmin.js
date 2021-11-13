@@ -4,16 +4,19 @@ import "./MakeAdmin.css";
 const MakeAdmin = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
-        axios.put(`https://thawing-harbor-39490.herokuapp.com/users`)
+        axios.put(`https://thawing-harbor-39490.herokuapp.com/users/${data.email}`)
             .then(res => {
                 if (res.data.modifiedCount) {
-                    alert("Admin added successful")
+                    alert("Admin added successful");
+                    return;
                 }
                 if (res.data.isAdmin) {
-                    alert("User already a Admin")
+                    alert("User already a Admin");
+                    return;
                 }
                 if(!res.data.registered){
-                    alert("Please Register this user, we cannot find him/her in out database")
+                    alert("Please Register this user, we cannot find him/her in out database");
+                    return;
                 }
             })
     };

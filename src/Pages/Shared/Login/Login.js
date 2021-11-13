@@ -8,7 +8,7 @@ const Login = () => {
     const location = useLocation();
     const history = useHistory();
     // handle redirecting using google login
-    const handleGoogleSignIn = () => {
+    const googleSignIn = () => {
         signInUsingGoogle(location, history)
     }
 
@@ -51,7 +51,7 @@ const Login = () => {
                 </div>
                 </div>
             </form>
-            <button onClick={handleGoogleSignIn} className="btn__regular">Google Sign In</button>
+            <button onClick={googleSignIn} className="btn__regular">Google Sign In</button>
         </div>
     );
 };
