@@ -13,7 +13,7 @@ const AboutUs = () => {
             </Slide>
             <div className="row">
                 <div className="col-md-5 col-sm-12">
-                    <img className="img-fluid rounded" src="https://i.ibb.co/Rh4jXQH/why-choose-us.jpg" alt="about us" />
+                    <img className="img-fluid rounded" src="https://i.ibb.co/9pvfG1Z/3385c20a29c182909bd2e61259aff7c5.jpg" alt="about us" />
                 </div>
                 <div className="col-md-7 row d-flex justify-content-center align-items-center">
                     <div className="col-md-6">
@@ -22,8 +22,8 @@ const AboutUs = () => {
                             <img src="https://i.ibb.co/hgWgqrG/service-removebg-preview.png*" alt="" />
                         </div>
                         <div>
-                            <h4>Best Travel Guide</h4>
-                            <p>Even in the digital age, travel guide books are an important part of my travel planning journey. I have read and tried many different travel books and online travel guides.</p>
+                            <h4>Best Instruction Guide</h4>
+                            <p>Make sure the car is in neutral before releasing the clutch. The neutral slot is the empty space between the gears, represented by the bar in the middle of the "H."</p>
                         </div>
                     </div>
                     <div className="about__us__item">
@@ -42,17 +42,17 @@ const AboutUs = () => {
                                 <img src="https://i.ibb.co/RHd2Lv2/taxi-removebg-preview.png" alt="" />
                             </div>
                             <div>
-                                <h4>Airport Taxi</h4>
-                                <p>City Airport Taxis arranges transfers from Dhaka Airport to your desired location. Our all-inlclusive door-to-door service also includes meet and greet</p>
+                                <h4>Luxury Cars</h4>
+                                <p>A luxury car is a car that provides increased levels of comfort, equipment, amenities, quality, performance, and status compared to regular cars for an increased price.</p>
                             </div>
                         </div>
                         <div className="about__us__item">
                             <div>
-                                <img src="https://i.ibb.co/XDt53TC/food-removebg-preview.png" alt="food" />
+                                <img style={{borderRadius:"50%"}} src="https://i.ibb.co/9ntbd9w/spare-Parts.png" alt="food" />
                             </div>
                             <div>
-                                <h4>Delicoius Food</h4>
-                                <p>A general food and cooking blog. I like to experiment and try all different types of cuisine and I have a passion for food photography and styling.</p>
+                                <h4>Original Spare Parts</h4>
+                                <p>A spare part, spare, service part, repair part, or replacement part, is an interchangeable part that is kept in an inventory and used</p>
                             </div>
                         </div>
                     </div>

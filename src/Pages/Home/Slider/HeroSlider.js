@@ -1,16 +1,16 @@
-import { HashLink } from "react-router-hash-link";
+import { Link } from "react-router-dom";
 import "./HeroSlider.css";
 
 const HeroSlider = () => {
     return (
         <div className="banner img-fluid">
           <div>
-            <h1>Welcome to <br /> CarMax</h1>
-            <p>Travel is the movement of people between distant geographical locations.<br /> Travel can also include relatively short stays between <br /> successive movements, as in the case of tourism.</p>
+            <h1 className="text-light">Welcome to <br /> Car<span style={{color:"#FC5C65"}}>Max</span></h1>
+            <p style={{fontWeight:"400", color:"lightgray"}}>CarMax Verso focuses on luxury cars, performance cars and also on unique limited edition vehicles. The blog contains a range of car reviews as well as products, gadgets, and accessory reviews.</p>
             <div className="text-center">
-              <HashLink to="/home#services">
+              <Link to="/cars">
                 <button className="btn__regular">Explore Our Car <i class="fas fa-arrow-right"></i></button>
-              </HashLink>
+              </Link>
             </div>
           </div>
         </div>

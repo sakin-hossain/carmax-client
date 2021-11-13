@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import AuthProvider from './Context/AuthProvider';
 import AdminDashBoard from './Pages/Admin/AdminDashBoard/AdminDashBoard';
+import Cars from './Pages/Cars/Cars';
 import Home from './Pages/Home/Home/Home';
 import Service from './Pages/Home/Service/Service';
 import MyOrders from './Pages/MyOrders/MyOrders';
@@ -26,6 +27,9 @@ function App() {
             </Route>
             <Route exact path="/login">
               <Login/>
+            </Route>
+            <Route exact path="/cars">
+              <Cars/>
             </Route>
             <PrivateRoute exact path="/services/:serviceId">
               <Service/>

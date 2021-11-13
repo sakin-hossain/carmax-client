@@ -5,15 +5,16 @@ import "./MyOrders.css";
 
 const MyOrders = () => {
     const {user} = useAuth();
-    const [orders, setOrder] = useState([]);
+    const [orders, setOrders] = useState([]);
     const [isCanceled, setIsCanceled] = useState(null);
 
     useEffect(()=>{
-        fetch('https://thawing-harbor-39490.herokuapp.com/myOrders')
+        fetch(`https://thawing-harbor-39490.herokuapp.com/myOrders?email=${user.email}`)
         .then(res=>res.json())
         .then(data=>{
-            setOrder(data)
+            setOrders(data)
         })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[isCanceled]);
 
     const handleCancel = id =>{
@@ -31,8 +32,6 @@ const MyOrders = () => {
             }
         });
     }
-    const order = orders.filter(ord => ord.email === user.email);
-    console.log(order);
     return (
         <div className="orders">
             <h1 className="text-center my-5">Here is Your Orders</h1>
@@ -49,7 +48,7 @@ const MyOrders = () => {
                     </tr>
                 </thead>
             {
-                order.map(or=> 
+                orders.map(or=> 
                     <tbody key={or._id}>
                         <tr>
                             <td>{or.packageName}</td>

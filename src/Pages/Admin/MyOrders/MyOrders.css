@@ -1,0 +1,10 @@
+.myorder-container {
+  background-color: #211e3b;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.myorder-custom-font h1 {
+  font-size: 250%;
+}

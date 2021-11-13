@@ -29,19 +29,14 @@ const Header = () => {
                                 <Link to="/home" class="nav-link">Home</Link>
                             </Nav.Link>
                             <Nav.Link class="nav-item">
-                                <HashLink to="/home#services" className="nav-link">Packages</HashLink>
+                                <Link className="nav-link" to="/cars">Cars</Link>
                             </Nav.Link>
                             <Nav.Link class="nav-item">
                                 <HashLink className="nav-link" to="/home#about-us">About Us</HashLink>
                             </Nav.Link>
                             <Nav.Link class="nav-item">
-                                <HashLink className="nav-link" to="/home#contract-us">Contract Us</HashLink>
+                              <HashLink className="nav-link" to="/home#contract-us">Contract Us</HashLink>
                             </Nav.Link>
-                            {
-                                user.email && <Nav.Link className="nav-item">
-                                    <Link className="nav-link" to="/myOrders">My Orders</Link>
-                                </Nav.Link>
-                            }
                     </Nav>
                     <div className="d-flex justify-content-around align-items-center">
                             {

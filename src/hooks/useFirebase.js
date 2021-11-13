@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { useEffect, useState } from "react";
 import initializeAuthentication from "../../src/Pages/Shared/Firebase/firebase.init";
 
@@ -12,10 +12,24 @@ const useFirebase = () => {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState("");
+    const [admin, setAdmin] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
-    const signInUsingGoogle = () => {
+    const signInUsingGoogle = (location, history) => {
         const googleProvider = new GoogleAuthProvider();
-        return signInWithPopup(auth, googleProvider);
+        return signInWithPopup(auth, googleProvider)
+        .then((result) => {
+            const user = result.user;
+            setUser(user);
+            saveUser(user.email, user.displayName, 'PUT');
+          })
+          .then(result => {
+            const redirect_uri = location.state?.from || "/home";
+            history.push(redirect_uri);
+          })
+          .catch((error) => {
+            setError(error.message);
+          })
+          .finally(() => setIsLoading(false));
     }
 // check if login or not
     const checkedIsLogin = e =>{
@@ -34,26 +48,39 @@ const useFirebase = () => {
 // form handler
     const handleSubmit = e =>{
         e.preventDefault();
-        if(password.length < 8){
-            setError("Password Must be at least 8 characters long.");
+        if(password.length < 5){
+            setError("Password Must be at least 5 characters long.");
             return;
         }
 
         isLogin? processToLogin(email, password): processToRegister(email,password);
     }
 // register function
-    const processToRegister = (email, password) => {
+    const processToRegister = (email, password, history) => {
+        setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
-        .then((result) => {
-        const user = result.user;
-        console.log(user);
-        setError("");
-        verifyEmail();
-        setUserName();
-      })
-      .catch((error) => {
-        setError(error.message);
-      });
+            .then((result) => {
+            const newUser = { email, displayName: name };
+            setUser(newUser);
+            setError("");
+            setUserName();
+            //save user to database
+            saveUser(email, name, 'POST');
+            // send name to firebase after creation
+            updateProfile(auth.currentUser, {
+                displayName: name
+            }).then(() => {
+            }).catch((error) => {
+            });
+            history.replace('/')
+            })
+            .catch((error) => {
+            setError(error.message);
+            })
+            .finally(() => {
+            setIsLoading(false);
+            // window.location.reload();
+        });
     }
 // login via email and password
     const processToLogin = (email, password) => {
@@ -77,13 +104,6 @@ const useFirebase = () => {
         return () => unsubscribed;
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
-// verify new user by mail
-    const verifyEmail = () =>{
-      sendEmailVerification(auth.currentUser)
-      .then(result=>{
-        console.log(result);
-      })
-    };
 // forget password or reset password
     const handleResetPass = () => {
       sendPasswordResetEmail(auth, email)
@@ -100,6 +120,23 @@ const logOut = () =>{
         // An error happened.
       }).finally(() => setIsLoading(false));
 }
+useEffect(() => {
+    fetch(`https://thawing-harbor-39490.herokuapp.com/users/${user.email}`)
+      .then(res => res.json())
+      .then(data => setAdmin(data.admin))
+  }, [user.email]);
+
+  const saveUser = (email, displayName, method) => {
+    const user = { email, displayName };
+    fetch('https://thawing-harbor-39490.herokuapp.com/users', {
+      method: method,
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+      .then()
+  }
     return {
         signInUsingGoogle,
         logOut,
@@ -118,6 +155,7 @@ const logOut = () =>{
         name,
         setIsLoading,
         isLoading,
+        admin,
         processToLogin,
         processToRegister,
         error

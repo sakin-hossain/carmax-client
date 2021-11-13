@@ -1,28 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import Rating from 'react-rating';
-import Slide from 'react-reveal/Slide';
 import { Link } from 'react-router-dom';
-import "./Services.css";
 
-
-const Services = () => {
-    const [packages, setPackages] = useState([]);
+const Cars = () => {
+    const [cars, setCars] = useState([]);
     useEffect(()=>{
         fetch('https://thawing-harbor-39490.herokuapp.com/addCar')
         .then(res => res.json())
-        .then(data=> setPackages(data));
+        .then(data=> setCars(data));
     },[]);
+
     return (
-        <div className="titles" id="services">
-            <Slide left>
-                <div>
-                    <span>Popular Cars</span>
-                    <h2 className="mx-2">Most Popular Cars <br /> In Our Shop</h2>
-                </div>
-            </Slide>
+        <div>
+            <div className="titles">
+                <span>All Cars</span>
+                <h2 className="mx-2">Here are All Luxury Cars <br /> In Our Shop</h2>
+            </div>
             <div className="row">
                 {
-                    packages.slice(0,6).map(pk=>
+                    cars.map(pk=>
                         <div className="col-md-4 col-sm-12">
                             <div className="shadow package" key={pk.id}>
                             <div className="package__photo mx-auto">
@@ -55,4 +51,4 @@ const Services = () => {
     );
 };
 
-export default Services;
+export default Cars;
